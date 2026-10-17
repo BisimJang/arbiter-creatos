@@ -1,0 +1,33 @@
+﻿{
+  "name": "milestone-escrow-agent",
+  "version": "1.0.0",
+  "description": "Autonomous Milestone Escrow & Code-Testing Agent for Stripe Projects and CreateOS",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "build": "node -e \"console.log('Build complete')\"",
+    "demo": "node src/demo.js",
+    "agent": "node src/demo.js",
+    "test": "node --test src/arbiter.test.js src/markdown.test.js src/server.test.js src/tasks.test.js"
+  },
+  "keywords": [
+    "stripe",
+    "createos",
+    "agent",
+    "escrow",
+    "sandbox"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@nodeops-createos/sandbox": "^0.8.2",
+    "dotenv": "^16.4.5",
+    "stripe": "^17.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

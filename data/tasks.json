@@ -1,0 +1,16 @@
+[
+  {
+    "id": "task_mvcvpo8i_e5z17m",
+    "title": "Format 10-Digit Phone Number",
+    "description": "Create a JavaScript function `formatPhoneNumber` that takes a string, extracts exactly 10 digits by ignoring spaces, hyphens, and parentheses, and returns it formatted as `(XXX) XXX-XXXX`. The function must throw a `TypeError` if the processed input does not yield exactly 10 digits.",
+    "criteria": "The `formatPhoneNumber` function must be exported as a named export from `submission.mjs`.\n\n**Input:** It accepts a single argument, `phoneNumberString`, which is expected to be a string.\n\n**Processing:**\n1.  The function must first remove all spaces (` `), hyphens (`-`), and parentheses (`(` and `)`) from the input string.\n2.  After removal, the remaining characters must be exactly 10 digits (0-9).\n\n**Output (Valid):** If the processed string contains exactly 10 digits, it must return a new string formatted as `(XXX) XXX-XXXX`, where X represents a digit from the input.\n\n**Output (Invalid):** If, after processing, the string does not contain exactly 10 digits (e.g., too few, too many, or non-digit characters remain), the function must throw a `TypeError`.\n\n**Assumptions:** The input `phoneNumberString` will always be a string. The `TypeError` is specifically for invalid *content* after processing, not for an incorrect *type* of the initial argument.",
+    "amountCents": 0,
+    "currency": "USD",
+    "submissionFilename": "submission.mjs",
+    "testFilename": "acceptance.test.mjs",
+    "testCode": "import test from 'node:test';\nimport assert from 'node:assert/strict';\nimport { formatPhoneNumber } from './submission.mjs';\n\ntest('should correctly format valid 10-digit phone numbers', () => {\n  assert.strictEqual(formatPhoneNumber('1234567890'), '(123) 456-7890', 'Basic 10 digits');\n  assert.strictEqual(formatPhoneNumber('(123) 456-7890'), '(123) 456-7890', 'Already formatted input');\n  assert.strictEqual(formatPhoneNumber('123-456-7890'), '(123) 456-7890', 'Input with hyphens');\n  assert.strictEqual(formatPhoneNumber(' 123 456 7890 '), '(123) 456-7890', 'Input with spaces');\n  assert.strictEqual(formatPhoneNumber(' (123) - 456 - 7890 '), '(123) 456-7890', 'Input with mixed ignored characters');\n});\n\ntest('should throw TypeError for invalid phone number inputs', () => {\n  assert.throws(() => formatPhoneNumber('12345'), TypeError, 'Too few digits');\n  assert.throws(() => formatPhoneNumber('12345678901'), TypeError, 'Too many digits');\n  assert.throws(() => formatPhoneNumber('123a456789'), TypeError, 'Contains non-digit characters');\n  assert.throws(() => formatPhoneNumber(''), TypeError, 'Empty string');\n  assert.throws(() => formatPhoneNumber('() - '), TypeError, 'Only ignored characters');\n  assert.throws(() => formatPhoneNumber('123456789'), TypeError, 'Exactly 9 digits');\n  assert.throws(() => formatPhoneNumber('123456789012'), TypeError, 'Exactly 12 digits');\n});",
+    "testsCount": 2,
+    "createdAt": "2026-10-17T20:58:42.546Z",
+    "seeded": false
+  }
+]
